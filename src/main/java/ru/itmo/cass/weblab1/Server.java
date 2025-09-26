@@ -72,17 +72,27 @@ public class Server {
         return new String(buffer);
     }
     private static boolean checkHit(double x, double y, double r) {
+        // 1-я четверть (ПРЯМОУГОЛЬНИК по SVG)
         if (x >= 0 && y >= 0) {
-            return y <= (-2 * x + r);
+            return x <= (r / 2) && y <= r;
         }
-        if (x <= 0 && y <= 0) {
+        // 2-я четверть (ПУСТО)
+        else if (x < 0 && y > 0) {
+            return false;
+        }
+        // 3-я четверть (ЧЕТВЕРТЬ КРУГА по SVG)
+        else if (x <= 0 && y <= 0) {
             return (x * x + y * y) <= (r * r);
         }
-
-        if (x >= 0 && y <= 0) {
-            return (x<= r/2) && y >= -r;
+        // 4-я четверть (ТРЕУГОЛЬНИК по SVG)
+        else if (x >= 0 && y <= 0) {
+            // Гипотенуза проходит через точки (r/2, 0) и (0, -r).
+            // Уравнение этой прямой: y = 2x - r.
+            // Нам нужна область НАД этой линией.
+            return y >= (2 * x - r);
         }
 
+        // На случай, если точка не попала ни в одну из областей
         return false;
     }
     private static Map<String, String> parseQueryString(String qs) throws UnsupportedEncodingException {

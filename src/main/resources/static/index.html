@@ -7,12 +7,12 @@
     <style>
       body {
         margin: 0;
-        background-color: #f0f0f0;
+        background-color: #f0f0f0; /* Оставляем общий фон чуть серым для контраста */
         font-family: Arial, sans-serif;
         font-size: 16px;
       }
       .page-header {
-        background-color: #2c3e50;
+        background-color: rgb(20, 48, 48); /* Новый темно-зеленый */
         color: #ffffff;
         padding: 1.25rem;
         text-align: center;
@@ -39,21 +39,21 @@
       .container-left,
       .container-right {
         width: 50%;
-        background-color: #ffffff;
-        border: 2px dashed #95a5a6;
+        background-color: rgb(244, 244, 244); /* Новый светло-серый фон */
+        border: 2px dashed rgb(192, 196, 196); /* Новая серая рамка */
         padding: 1.25rem;
         vertical-align: top;
       }
 
       .container-left h2,
       .container-right h2 {
-        color: #2c3e50;
+        color: rgb(20, 48, 48); /* Заголовки в цвет шапки */
         margin-top: 0;
       }
       .container-left h2::before,
       .container-right h2::before {
         content: "► ";
-        color: #34495e;
+        color: rgb(144, 29, 49); /* ► в бордовом цвете */
       }
       .results-table {
         width: 100%;
@@ -68,7 +68,8 @@
         text-align: left;
         border: none;
         padding: 0.625rem 1rem;
-        background: #d8d8d8;
+        background: rgb(131, 74, 84);
+        color: rgb(20, 48, 48);
         font-size: 0.875rem;
       }
 
@@ -91,17 +92,17 @@
       }
 
       .results-table tbody tr:nth-child(even) {
-        background: #f3f3f3;
+        background: #ffffff;
       }
 
       .results-table tr:hover td {
-        background-color: #34495e;
-        opacity: 80%;
+        background-color: rgb(20, 48, 48);
+        opacity: 90%;
         color: #f0f0f0;
       }
 
       .hit-true td {
-        background-color: rgba(40, 167, 69, 0.2);
+        background-color: rgba(60, 150, 90, 0.2);
       }
 
       .hit-false td {
@@ -109,7 +110,7 @@
       }
 
       .page-footer {
-        background-color: #34495e;
+        background-color: rgb(20, 48, 48);
         color: white;
         padding: 1.25rem;
         text-align: center;
@@ -138,21 +139,20 @@
       .form-group select {
         width: 95%;
         padding: 0.625rem;
-        border: 1px solid #ccc;
+        border: 1px solid rgb(192, 196, 196);
         border-radius: 0.3125rem;
         font-size: 1rem;
       }
       .submit-button {
-        background-color: #2c3e50;
+        background-color: rgb(144, 29, 49);
       }
       .submit-button:hover {
-        background-color: #34495e;
+        background-color: rgb(174, 39, 59);
       }
       .submit-button,
       .reset-button {
         width: 100%;
         padding: 0.75rem;
-
         color: white;
         border: none;
         border-radius: 0.3125rem;
@@ -160,10 +160,10 @@
         cursor: pointer;
       }
       .reset-button {
-        background-color: #5f7992;
+        background-color: rgb(200, 119, 132);
       }
       .reset-button:hover {
-        background-color: #829ab4;
+        background-color: rgb(218, 157, 167);
       }
 
       .button-group {
@@ -182,9 +182,9 @@
       }
 
       .x-button.selected {
-        background-color: #2c3e50;
+        background-color: rgb(20, 48, 48);
         color: white;
-        border-color: #2c3e50;
+        border-color: rgb(20, 48, 48);
       }
 
       .error-message {
@@ -205,9 +205,9 @@
       }
 
       #graph .graph-area {
-        fill: #5c9aff;
-        stroke: #3375e0;
-        stroke-width: 1;
+        fill: rgb(194, 255, 219);
+        stroke: rgb(255, 142, 161);
+        stroke-width: 2;
         fill-opacity: 0.7;
       }
 

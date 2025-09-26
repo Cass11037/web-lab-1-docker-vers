@@ -290,7 +290,7 @@ function drawPoint(x, y, r, hit) {
 document.addEventListener("DOMContentLoaded", () => {
   updateGraphLabels(parseFloat(rSelect.value));
   const resultsHistory = loadResultsFromLocalStorage();
-  for (const result of resultsHistory) {
-    addResultToTable(result);
+  for (let i = resultsHistory.length - 1; i >= 0; i--) {
+    addResultToTable(resultsHistory[i]);
   }
 });
