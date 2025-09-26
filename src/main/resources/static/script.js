@@ -16,11 +16,18 @@ const xButtons = document.querySelectorAll(".x-button");
 const hiddenXInput = document.getElementById("x-value");
 const yInput = document.getElementById("y-value");
 const rSelect = document.getElementById("r-value");
+const resetTableButton = document.getElementById("clear-button");
 
 // DOM Elements
 const tableBody = document.querySelector(".results-table tbody");
 const errorContainer = document.getElementById("error-container");
 
+resetTableButton.addEventListener("click", function (event) {
+  tableBody.innerHTML = "";
+  dotContainer.innerHTML = "";
+  localStorage.removeItem(KEY_FOR_TABLE_HISTORY);
+  console.log("History cleared.");
+});
 // X button preferences
 xButtons.forEach(function (button) {
   button.addEventListener("click", function (event) {
@@ -39,9 +46,9 @@ form.addEventListener("submit", function (event) {
   const errorMessage = validateAllFields();
   if (errorMessage) {
     showError(errorMessage);
-    console.error("Ошибка валидации: " + errorMessage);
+    console.error("Validation error: " + errorMessage);
   } else {
-    console.log("Валидация пройдена! Отправляем данные.");
+    console.log("Validation passed! Sending data.");
     sendDataToServer();
   }
 });
@@ -61,24 +68,24 @@ rSelect.addEventListener("change", () => {
 function validateAllFields() {
   const xValue = hiddenXInput.value;
   if (xValue === "") {
-    return "Пожалуйста, выберите значение X.";
+    return "Please select an X value.";
   }
 
   const yValueStr = yInput.value.trim().replace(",", ".");
   if (yValueStr === "") {
-    return "Пожалуйста, введите значение Y.";
+    return "Please enter a Y value.";
   }
   if (isNaN(yValueStr)) {
-    return "Значение Y должно быть числом.";
+    return "The Y value must be a number.";
   }
   const yNum = parseFloat(yValueStr);
   if (yNum < -5 || yNum > 5) {
-    return "Значение Y должно быть в диапазоне (-5 ... 5).";
+    return "The Y value must be in the range (-5 ... 5).";
   }
 
   const rValue = rSelect.value;
   if (rValue === "") {
-    return "Пожалуйста, выберите значение R.";
+    return "Please select an R value.";
   }
 
   return null;
@@ -108,18 +115,19 @@ function sendDataToServer() {
       if (!response.ok) {
         return response.json().then((errorData) => {
           throw new Error(
-            errorData.error || `Ошибка сервера: ${response.status}`
+            errorData.error || `Server error: ${response.status}`
           );
         });
       }
       return response.json();
     })
     .then((data) => {
-      console.log("Данные успешно получены:", data);
+      console.log("Data received successfully:", data);
       addResultToTable(data);
+      updateResultsWithNewRow(data);
     })
     .catch((error) => {
-      console.error("Произошла ошибка при отправке данных: ", error);
+      console.error("An error occurred while sending data: ", error);
       showError(error.message);
     });
 }
@@ -131,7 +139,7 @@ function sendDataToServer() {
 function addResultToTable(data) {
   const newRow = tableBody.insertRow(0);
 
-  const hitStatus = data.hit ? "Попадание" : "Промах";
+  const hitStatus = data.hit ? "Hit" : "Miss";
   newRow.className = data.hit ? "hit-true" : "hit-false";
 
   newRow.innerHTML = `
@@ -166,7 +174,16 @@ function saveResultsToLocalStorage(results) {
   localStorage.setItem(KEY_FOR_TABLE_HISTORY, JSON.stringify(results));
 }
 
-function loadResultsFromLocalStorage() {}
+function loadResultsFromLocalStorage() {
+  const savedResults = localStorage.getItem(KEY_FOR_TABLE_HISTORY);
+  return savedResults ? JSON.parse(savedResults) : [];
+}
+
+function updateResultsWithNewRow(data) {
+  let resultsHistory = loadResultsFromLocalStorage();
+  resultsHistory.unshift(data);
+  saveResultsToLocalStorage(resultsHistory);
+}
 /**
  * Updates R when user shange their choice
  * @param {Float|NaN} r
@@ -272,4 +289,8 @@ function drawPoint(x, y, r, hit) {
 }
 document.addEventListener("DOMContentLoaded", () => {
   updateGraphLabels(parseFloat(rSelect.value));
+  const resultsHistory = loadResultsFromLocalStorage();
+  for (const result of resultsHistory) {
+    addResultToTable(result);
+  }
 });
