@@ -30,24 +30,18 @@ public class Server {
     }
 
     private static void handleRequest() {
-        long startTime = System.nanoTime(); // Start timing
+        long startTime = System.nanoTime();
 
         try {
-
             String postData = readPostData();
-
             Map<String, String> params = parseQuery(postData);
             double x = Double.parseDouble(params.get("x"));
             double y = Double.parseDouble(params.get("y"));
             double r = Double.parseDouble(params.get("r"));
-
-
             boolean hit = checkHit(x, y, r);
             String currentTime = LocalDateTime.now().format(DATE_TIME_FORMATTER);
             double executionTimeMs = (double)(System.nanoTime() - startTime) / 1_000_000.0;
             sendSuccessResponse(x, y, r, hit, currentTime, executionTimeMs);
-
-
         } catch (Exception e) {
             double executionTimeMs = (System.nanoTime() - startTime) / 1_000_000.0;
             sendErrorResponse(e, executionTimeMs);
@@ -65,7 +59,7 @@ public class Server {
             int totalBytesRead = 0;
             while (totalBytesRead < contentLength) {
                 int bytesRead = in.read(buffer, totalBytesRead, contentLength - totalBytesRead);
-                if (bytesRead == -1) { // Конец потока
+                if (bytesRead == -1) {
                     break;
                 }
                 totalBytesRead += bytesRead;
