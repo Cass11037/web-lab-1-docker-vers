@@ -1,8 +1,10 @@
 plugins {
     id 'java'
+    // Добавляем плагин application, это стандарт для приложений
+    id 'application'
 }
 
-group = 'ru.arf'
+group = 'ru.itmo.sludnaya.weblab1'
 version = '1.0-SNAPSHOT'
 
 repositories {
@@ -10,25 +12,29 @@ repositories {
 }
 
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-    implementation files('./libs/fastcgi-lib.jar') // Указываем путь к библиотеке
-
+    // Ваша локальная библиотека для fastcgi
+    implementation files('./libs/fastcgi-lib.jar')
+    // Зависимость для работы с JSON, если вы ее используете
+    implementation 'org.json:json:20231013'
 }
 
-test {
-    useJUnitPlatform()
+// Указываем главный класс для всего приложения здесь.
+// Это более правильное место, чем внутри блока jar.
+application {
+    // ИСПРАВЛЕНО: Указываем ваш новый и правильный главный класс
+    mainClass = 'ru.itmo.sludnaya.weblab1.Server'
 }
 
-
+// Этот блок создает исполняемый jar-файл
 jar {
     manifest {
-        attributes(
-                'Main-Class': 'ru.arf.Main'
-        )
+        // Gradle автоматически возьмет главный класс из блока application
+        attributes('Main-Class': application.mainClass)
     }
+    // Этот блок нужен, чтобы упаковать все зависимости (например, org.json) внутрь вашего jar
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
-    archiveFileName = 'web-lab1_1.jar'
+    // Давайте уберем жесткое имя файла, чтобы Gradle сам его генерировал
+    // archiveFileName = 'web-lab1_1.jar'
 }
