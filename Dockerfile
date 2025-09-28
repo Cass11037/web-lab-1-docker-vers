@@ -11,4 +11,4 @@ EXPOSE 1337
 RUN mkdir /app
 WORKDIR /app
 COPY --from=build /home/gradle/src/build/libs/*.jar /app/app.jar
-ENTRYPOINT ["java", "-cp", "app.jar", "ru.itmo.sludnaya.weblab1.Server"]
+ENTRYPOINT ["java", "-DFCGI_PORT=1337", "-jar", "app.jar"]

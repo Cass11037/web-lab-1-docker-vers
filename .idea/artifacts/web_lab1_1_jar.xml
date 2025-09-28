@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="web-lab1.1:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/web_lab1_1_jar</output-path>
+    <output-path>$PROJECT_DIR$/build/libs</output-path>
     <root id="archive" name="web-lab1.1.jar">
       <element id="module-output" name="web-lab1.1.main" />
       <element id="extracted-dir" path="$PROJECT_DIR$/libs/fastcgi-lib.jar" path-in-jar="/" />

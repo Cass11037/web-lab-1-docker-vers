@@ -4,7 +4,7 @@ plugins {
     id 'application'
 }
 
-group = 'ru.itmo.sludnaya.weblab1'
+group = 'ru.itmo.cass.weblab1'
 version = '1.0-SNAPSHOT'
 
 repositories {
@@ -22,7 +22,7 @@ dependencies {
 // Это более правильное место, чем внутри блока jar.
 application {
     // ИСПРАВЛЕНО: Указываем ваш новый и правильный главный класс
-    mainClass = 'ru.itmo.sludnaya.weblab1.Server'
+    mainClass = 'ru.itmo.cass.weblab1.Server'
 }
 
 // Этот блок создает исполняемый jar-файл
