@@ -1,0 +1,30 @@
+{
+  "name": "web-lab-1-docker-vers",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "parcel src/main/resources/static/index.html",
+    "build": "parcel build src/main/resources/static/index.html",
+    "format": "prettier --write \"src/main/resources/static/**/*.{js,ts,less,css,html}\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cass11037/web-lab-1-docker-vers.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cass11037/web-lab-1-docker-vers/issues"
+  },
+  "homepage": "https://github.com/Cass11037/web-lab-1-docker-vers#readme",
+  "devDependencies": {
+    "@types/node": "^24.6.2",
+    "less": "^4.4.1",
+    "parcel": "^2.16.0",
+    "prettier": "^3.6.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}
