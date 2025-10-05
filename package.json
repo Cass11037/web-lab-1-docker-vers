@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "start": "parcel src/main/resources/static/index.html",
-    "build": "parcel build src/main/resources/static/index.html",
+    "build": "parcel build src/main/resources/static/index.html --dist-dir build/dist",
     "format": "prettier --write \"src/main/resources/static/**/*.{js,ts,less,css,html}\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/Cass11037/web-lab-1-docker-vers#readme",
   "devDependencies": {
+    "@parcel/transformer-less": "^2.16.0",
     "@types/node": "^24.6.2",
     "less": "^4.4.1",
     "parcel": "^2.16.0",
