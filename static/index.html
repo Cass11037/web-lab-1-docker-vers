@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Client-Server Application | Lab Work 1</title>
+        <link rel="stylesheet" href="style.less" />
+    </head>
+    <body>
+        <header class="page-header">
+            <h1 class="header-title">Sludnaya Victoria Evgenievna</h1>
+            <p>Group: P3122 | Variant: 476011</p>
+        </header>
+
+        <main>
+            <table class="layout-table">
+                <tbody>
+                    <tr>
+                        <td class="container-left">
+                            <h2>Workspace</h2>
+                            <div class="graph-container">
+                                <svg
+                                    id="graph"
+                                    width="300"
+                                    height="300"
+                                    viewBox="-155 -155 310 310"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <g class="graph-area">
+                                        <polygon points="0,0 50,0 0,-100" />
+                                        <rect x="0" y="0" width="50" height="100" />
+                                        <path d="M 0 0 L -100 0 A 100 100 0 0 0 0 100 Z" />
+                                    </g>
+                                    <g class="axis">
+                                        <line x1="0" y1="-140" x2="0" y2="140" />
+                                        <polygon points="0,-150 5,-140 -5,-140" />
+                                        <text x="10" y="-135">Y</text>
+                                        <line x1="-140" y1="0" x2="140" y2="0" />
+                                        <polygon points="150,0 140,5 140,-5" />
+                                        <text x="135" y="-10">X</text>
+                                    </g>
+                                    <g id="x-axis-ticks" class="axis-ticks"></g>
+                                    <g id="y-axis-ticks" class="axis-ticks"></g>
+                                    <g id="dot-container"></g>
+                                </svg>
+                            </div>
+                            <div class="form-container">
+                                <h2>Data Entry</h2>
+                                <form id="coordinates-form">
+                                    <div id="error-container" class="error-message"></div>
+                                    <div class="form-group">
+                                        <label>Enter the X value:</label>
+                                        <div class="button-group">
+                                            <button type="button" class="x-button" value="-2">
+                                                -2
+                                            </button>
+                                            <button type="button" class="x-button" value="-1.5">
+                                                -1.5
+                                            </button>
+                                            <button type="button" class="x-button" value="-1">
+                                                -1
+                                            </button>
+                                            <button type="button" class="x-button" value="-0.5">
+                                                -0.5
+                                            </button>
+                                            <button type="button" class="x-button" value="0">
+                                                0
+                                            </button>
+                                            <button type="button" class="x-button" value="0.5">
+                                                0.5
+                                            </button>
+                                            <button type="button" class="x-button" value="1">
+                                                1
+                                            </button>
+                                            <button type="button" class="x-button" value="1.5">
+                                                1.5
+                                            </button>
+                                            <button type="button" class="x-button" value="2">
+                                                2
+                                            </button>
+                                        </div>
+                                        <input type="hidden" id="x-value" name="x" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Enter the Y value:</label>
+                                        <input
+                                            type="text"
+                                            id="y-value"
+                                            name="y"
+                                            placeholder="in range -5 to 5"
+                                            required
+                                        />
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Select the R value:</label>
+                                        <select id="r-value" name="r" required>
+                                            <option value="" disabled selected>
+                                                -- Select R --
+                                            </option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="submit-button">Check</button>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="reset" class="reset-button">
+                                            Reset Fields
+                                        </button>
+                                    </div>
+                                    <div class="form-group">
+                                        <button
+                                            id="clear-button"
+                                            class="reset-button"
+                                            type="button"
+                                        >
+                                            Clear Table
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </td>
+                        <td class="container-right">
+                            <h2>Check History</h2>
+                            <table class="results-table">
+                                <thead>
+                                    <tr>
+                                        <th>X</th>
+                                        <th>Y</th>
+                                        <th>R</th>
+                                        <th>Result</th>
+                                        <th>Current Time</th>
+                                        <th>Script Execution Time (ms)</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+        <footer class="page-footer">
+            <p>&copy; 2025, Saint Petersburg</p>
+        </footer>
+        <script src="script.ts" type="module"></script>
+    </body>
+
+</html>

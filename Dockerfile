@@ -27,6 +27,8 @@ WORKDIR /home/gradle/src
 
 # Копируем исходный код Java-проекта
 COPY --chown=gradle:gradle . .
+
+RUN rm -rf ./src/main/resources/static/*
 # Копируем скомпилированный фронтенд из этапа 'frontend-builder'
 # в папку статических ресурсов Gradle/Spring Boot.
 # Теперь фронтенд будет упакован внутрь JAR-файла.

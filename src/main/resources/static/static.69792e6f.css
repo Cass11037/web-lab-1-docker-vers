@@ -1,0 +1,249 @@
+body {
+    background-color: #f0f0f0;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+
+.page-header {
+    color: #fff;
+    text-align: center;
+    background-color: #143030;
+    padding: 1.25rem;
+}
+
+.page-header p {
+    margin-top: 0.3125rem;
+}
+
+.header-title {
+    margin: 0;
+    font-family: cursive, sans-serif;
+}
+
+.layout-table {
+    border-spacing: 20px;
+    width: 100%;
+    padding: 2rem 4%;
+}
+
+.container-left,
+.container-right {
+    vertical-align: top;
+    background-color: #f4f4f4;
+    border: 2px dashed #c0c4c4;
+    width: 50%;
+    padding: 1.25rem;
+}
+
+.container-left h2,
+.container-right h2 {
+    color: #143030;
+    margin-top: 0;
+}
+
+.container-left h2:before,
+.container-right h2:before {
+    content: '► ';
+    color: #901d31;
+}
+
+.page-footer {
+    color: #fff;
+    text-align: center;
+    background-color: #143030;
+    padding: 1.25rem;
+}
+
+.page-footer p {
+    margin: 0;
+}
+
+.results-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border: none;
+    width: 100%;
+    margin-bottom: 1.25rem;
+}
+
+.results-table thead th {
+    color: #143030;
+    background: #834a54;
+    font-weight: bold;
+}
+
+.results-table tbody td {
+    vertical-align: top;
+}
+
+.results-table th,
+.results-table td {
+    text-align: left;
+    border: none;
+    padding: 0.625rem 1rem;
+    font-size: 0.875rem;
+}
+
+.results-table tr:nth-child(2n) {
+    background: #fff;
+}
+
+.results-table tr:hover td {
+    color: #f0f0f0;
+    background-color: #143030e6;
+}
+
+.results-table tr th:first-child,
+.results-table tr td:first-child {
+    border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.results-table tr th:last-child,
+.results-table tr td:last-child {
+    border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.results-table tr.hit-true td {
+    background-color: #3c965a33;
+}
+
+.results-table tr.hit-false td {
+    background-color: #dc354533;
+}
+
+.form-container {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    display: flex;
+}
+
+.form-group {
+    width: 100%;
+    margin-bottom: 4%;
+}
+
+.form-group label {
+    color: #333;
+    margin-bottom: 2%;
+    font-weight: bold;
+    display: block;
+}
+
+.form-group input[type='text'],
+.form-group select,
+.form-group textarea {
+    box-sizing: border-box;
+    border: 1px solid #c0c4c4;
+    border-radius: 0.3125rem;
+    width: 100%;
+    padding: 0.625rem;
+    font-size: 1rem;
+}
+
+.submit-button {
+    color: #fff;
+    cursor: pointer;
+    background-color: #901d31;
+    border: none;
+    border-radius: 0.3125rem;
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.submit-button:hover {
+    background-color: #6e1625;
+}
+
+.reset-button {
+    color: #fff;
+    cursor: pointer;
+    background-color: #c87784;
+    border: none;
+    border-radius: 0.3125rem;
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.reset-button:hover {
+    background-color: #bc5a6a;
+}
+
+.button-group {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    display: flex;
+}
+
+.x-button {
+    cursor: pointer;
+    background-color: #f9f9f9;
+    border: 1px solid #c0c4c4;
+    border-radius: 5px;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+    transition:
+        background-color 0.2s,
+        color 0.2s,
+        border-color 0.2s;
+}
+
+.x-button.selected {
+    color: #fff;
+    background-color: #143030;
+    border-color: #143030;
+}
+
+.error-message {
+    text-align: center;
+    color: #d8000c;
+    background-color: #ffbfc2;
+    border: 1px solid #d8000c;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    padding: 10px;
+    display: none;
+}
+
+.graph-container {
+    justify-content: center;
+    margin-bottom: 20px;
+    display: flex;
+}
+
+#graph .graph-area {
+    fill: #c2ffdb;
+    stroke: #ff8ea1;
+    stroke-width: 2px;
+    fill-opacity: 0.7;
+}
+
+#graph .axis line,
+#graph .axis polygon {
+    stroke: #333;
+    stroke-width: 2px;
+}
+
+#graph .axis text {
+    fill: #333;
+    font-family: sans-serif;
+    font-size: 10px;
+}
+
+#graph .axis-ticks line {
+    stroke: #666;
+    stroke-width: 1px;
+}
+
+#graph .axis-ticks text {
+    fill: #666;
+    text-anchor: middle;
+    font-family: sans-serif;
+    font-size: 8px;
+}
+/*# sourceMappingURL=static.69792e6f.css.map */
